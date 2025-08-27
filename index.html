@@ -4,44 +4,50 @@
   <meta charset="UTF-8">
   <title>EUSC Archive</title>
   <style>
+    /* General body */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #e3e5e8; /* lighter darkish white */
+      background: #e6eaf1; /* softer background */
       color: #222;
     }
 
+    /* Header */
     header {
-      background: #1f3a6b; /* darkish blue */
-      color: #e0e0e0; /* soft white text */
+      background: #1e3a6b; /* darkish blue */
+      color: #eaeaea;      /* dark white text */
+      padding: 40px 20px;
       text-align: center;
-      padding: 30px 20px;
-      font-size: 32px;
-      font-weight: bold;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+      letter-spacing: 1px;
+    }
+
+    /* Gallery */
     .gallery {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 30px;
       padding: 40px 20px;
-      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .card {
-      background: #f8f8f8; /* softer background for contrast */
-      border-radius: 20px;
+      background: #ffffff;
+      border-radius: 25px;
       overflow: hidden;
-      width: 45%;
-      max-width: 600px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.2s;
     }
 
     .card:hover {
@@ -50,34 +56,34 @@
 
     .card img {
       width: 100%;
-      border-bottom: 1px solid #ccc;
-      border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid #ddd;
+      border-radius: 25px 25px 0 0;
+      aspect-ratio: 16/9;
+      object-fit: cover;
     }
 
     .caption {
-      margin: 15px;
+      padding: 15px;
       font-size: 16px;
       color: #555;
-    }
-
-    @media(max-width: 900px) {
-      .card {
-        width: 80%; /* stack on smaller screens */
-      }
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>EUSC Archive</header>
+  <header>
+    <h1>EUSC Archive</h1>
+  </header>
+
   <div class="gallery" id="gallery">
     <!-- Cards will be inserted here -->
   </div>
 
   <script>
-    // Example data: replace src with your friend's images later
+    // Example data — later replace src with your friend's model images
     const items = [
-      { text: "Model 1", src: "https://via.placeholder.com/600x400?text=Model+1" },
-      { text: "Model 2", src: "https://via.placeholder.com/600x400?text=Model+2" }
+      { text: "Model 1 Description", src: "https://via.placeholder.com/600x400?text=Model+1" },
+      { text: "Model 2 Description", src: "https://via.placeholder.com/600x400?text=Model+2" }
     ];
 
     const gallery = document.getElementById("gallery");
