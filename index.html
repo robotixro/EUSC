@@ -7,34 +7,40 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f0f6ff;
+      background: #e3e5e8; /* lighter darkish white */
       color: #222;
     }
 
-    h1 {
+    header {
+      background: #1f3a6b; /* darkish blue */
+      color: #e0e0e0; /* soft white text */
       text-align: center;
-      padding: 20px;
-      color: #1e4eb8;
+      padding: 30px 20px;
+      font-size: 32px;
+      font-weight: bold;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 20px;
+      flex-wrap: wrap;
     }
 
     .card {
-      background: white;
+      background: #f8f8f8; /* softer background for contrast */
       border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       overflow: hidden;
+      width: 45%;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 15px;
       transition: transform 0.2s;
     }
 
@@ -42,41 +48,36 @@
       transform: translateY(-5px);
     }
 
-    .square {
+    .card img {
       width: 100%;
-      aspect-ratio: 1/1;
-      background: #dce6f9;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #1e4eb8;
-      font-weight: bold;
-      font-size: 18px;
+      border-bottom: 1px solid #ccc;
+      border-radius: 20px 20px 0 0;
     }
 
     .caption {
-      margin-top: 10px;
-      font-size: 14px;
+      margin: 15px;
+      font-size: 16px;
       color: #555;
+    }
+
+    @media(max-width: 900px) {
+      .card {
+        width: 80%; /* stack on smaller screens */
+      }
     }
   </style>
 </head>
 <body>
-  <h1>EUSC Archive</h1>
+  <header>EUSC Archive</header>
   <div class="gallery" id="gallery">
     <!-- Cards will be inserted here -->
   </div>
 
   <script>
-    // Example data
+    // Example data: replace src with your friend's images later
     const items = [
-      { text: "example text" },
-      { text: "example text" },
-      { text: "example text" },
-      { text: "example text" },
-      { text: "example text" },
-      { text: "example text" }
+      { text: "Model 1", src: "https://via.placeholder.com/600x400?text=Model+1" },
+      { text: "Model 2", src: "https://via.placeholder.com/600x400?text=Model+2" }
     ];
 
     const gallery = document.getElementById("gallery");
@@ -85,19 +86,18 @@
       const card = document.createElement("div");
       card.className = "card";
 
-      const square = document.createElement("div");
-      square.className = "square";
-      square.innerText = "Image";
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.text;
 
       const caption = document.createElement("div");
       caption.className = "caption";
       caption.innerText = item.text;
 
-      card.appendChild(square);
+      card.appendChild(img);
       card.appendChild(caption);
       gallery.appendChild(card);
     });
   </script>
 </body>
 </html>
-
